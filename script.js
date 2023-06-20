@@ -61,13 +61,11 @@ let playerScore = 0;
 let computerScore = 0;
 
 function game(roundResult) {
-    if (playerScore < 3 && computerScore < 3) {
         if (roundResult === "computer") {
             computerScore += 1;
         } else if (roundResult === "player") {
             playerScore += 1;
         }  
-    }
 }
 
 
