@@ -1,8 +1,14 @@
+// TODO: Use switch case for the choice portion
+//     : Simplify last function call
+//     : Wrap entire game in another function call so as to ask user if they wish
+//       to play another game.
+
+
+
 // function for getting a random integer
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
-
 
 // gets random integer between 1 and 3 and assigns to a variable
 getComputerChoice = () => getRndInteger(1, 4);
@@ -73,4 +79,3 @@ while (playerScore < 3 && computerScore < 3) {
         alert("Computer Won this Game, Better Luck Next Time!")
     }
 }
-
