@@ -69,11 +69,11 @@ function game(roundResult) {
 }
 
 
-while (playerScore < 3 && computerScore < 3) {
+while (playerScore < 1 && computerScore < 1) {
     game(playRound(playerSelection(), getComputerChoice()));
-    if (playerScore === 3) {
+    if (playerScore === 1) {
         alert("Player Won this Game, Can you win another in a row?")
-    } else if (computerScore === 3) {
+    } else if (computerScore === 1) {
         alert("Computer Won this Game, Better Luck Next Time!")
     }
 }
