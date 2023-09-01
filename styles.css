@@ -9,6 +9,15 @@ body {
     background-color: rgb(38,0,110);
 }
 
+button {
+    padding: 2px;
+    border-color: #211338;
+    background-color: #211338;  
+    border-style: solid;
+    border-radius: 10px;
+}
+
+
 .rps-choices {
     display: flex;
     justify-content: space-evenly;
