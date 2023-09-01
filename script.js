@@ -27,10 +27,11 @@ function playerSelectionConversion(choice) {
     }
 }
 
+/*
 function playerSelection() {
     return playerSelectionConversion(prompt("ROCK, PAPER or SCISSORS?"));
 } 
-
+*/
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -77,3 +78,22 @@ while (playerScore !== 0 && computerScore !== 0) {
         alert("Computer Won this Game, Better Luck Next Time!")
     }
 }
+
+
+/* DOM Manipulation begins here */
+
+/* Obtaining buttons from the rps-choices div, then selecting them all to add 
+an event listener */
+const buttonContainer = document.getElementsByClassName("rps-choices");
+const gameButtons = document.querySelectorAll("button");
+
+// Defining a function to handle the click event
+function buttonHandler(event) {
+    console.log(event.currentTarget.className);
+}
+
+gameButtons.forEach((button) => {
+    button.addEventListener('click', buttonHandler);
+});
+
+
