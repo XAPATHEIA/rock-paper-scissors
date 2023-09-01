@@ -33,30 +33,45 @@ function playerSelection() {
 } 
 */
 
+switch(playerSelection, computerSelection) {
+    case (playerSelection === computerSelection):
+        return "tie";
+    case (playerSelection === 1 && computerSelection === 2):
+        return "computer";
+    case (playerSelection === 2 && computerSelection === 1):
+        return "player";
+    case (playerSelection === 2 && computerSelection === 3):
+        return "computer";
+    case (playerSelection === 3 && computerSelection === 2):
+        return "player";
+    case (playerSelection === 1 && computerSelection === 3):
+        return "player";
+    case (playerSelection === 3 && computerSelection === 1):
+        return "computer";
+    default:
+        return "invalid selection";
+}
+
+/*
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        alert("TIE!");
         return "tie";
     } else if (playerSelection === 1 && computerSelection === 2) {
-        alert("Computer Wins!");
         return "computer";
     } else if (playerSelection === 2 && computerSelection === 1) {
-        alert("Player Wins!");
         return "player";
     } else if (playerSelection === 2 && computerSelection === 3) {
-        alert("Computer Wins!");
         return "computer";
     } else if (playerSelection === 3 && computerSelection === 2) {
-        alert("Player Wins!");
         return "player";
     } else if (playerSelection === 1 && computerSelection === 3) {
-        alert("Player Wins!");
         return "player";
     } else if (playerSelection === 3 && computerSelection === 1) {
-        alert("Computer Wins!");
         return "computer";
     }
 }
+*/
+
 
 let playerScore = 0;
 let computerScore = 0;
