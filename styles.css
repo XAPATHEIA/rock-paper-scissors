@@ -4,3 +4,13 @@ h1 {
     text-align: center;
     color: crimson;
 }
+
+body {
+    background-color: rgb(38,0,110);
+}
+
+.rps-choices {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}
