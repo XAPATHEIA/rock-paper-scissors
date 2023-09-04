@@ -1,4 +1,4 @@
-// TODO: Use switch case for the choice portion
+// TODO:
 //     : Simplify last function call
 //     : Wrap entire game in another function call so as to ask user if they wish
 //       to play another game.
@@ -33,26 +33,17 @@ function playerSelection() {
 } 
 */
 
-switch(playerSelection, computerSelection) {
-    case (playerSelection === computerSelection):
-        return "tie";
-    case (playerSelection === 1 && computerSelection === 2):
-        return "computer";
-    case (playerSelection === 2 && computerSelection === 1):
-        return "player";
-    case (playerSelection === 2 && computerSelection === 3):
-        return "computer";
-    case (playerSelection === 3 && computerSelection === 2):
-        return "player";
-    case (playerSelection === 1 && computerSelection === 3):
-        return "player";
-    case (playerSelection === 3 && computerSelection === 1):
-        return "computer";
-    default:
-        return "invalid selection";
+function playerSelection(choice) {
+    if (choice === "rock") {
+        return 1;
+    } else if (choice == "paper") {
+        return 2;
+    } else if (choice == "scissors") {
+        return 3;
+    }
 }
 
-/*
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "tie";
@@ -70,8 +61,6 @@ function playRound(playerSelection, computerSelection) {
         return "computer";
     }
 }
-*/
-
 
 let playerScore = 0;
 let computerScore = 0;
@@ -83,6 +72,16 @@ function game(roundResult) {
             playerScore += 1;
         }  
 }
+
+/* Function to wrap entire game around
+function toggleGame() {
+    var play = True;
+    while (play) {
+        console.log("this is working");
+        }
+    }
+}
+*/
 
 
 while (playerScore !== 0 && computerScore !== 0) {
@@ -102,13 +101,26 @@ an event listener */
 const buttonContainer = document.getElementsByClassName("rps-choices");
 const gameButtons = document.querySelectorAll("button");
 
-// Defining a function to handle the click event
+/* Defining a function to handle the click event
 function buttonHandler(event) {
     console.log(event.currentTarget.className);
 }
+*/
 
-gameButtons.forEach((button) => {
-    button.addEventListener('click', buttonHandler);
+gameButtons.forEach(button => {
+    button.addEventListener("click", event => {
+        playerSelection(event.currentTarget.className);
+    });
 });
 
 
+/* Adding a separate variable to each button so each event can be treated separately
+rockButton = document.querySelector(".rock");
+paperButton = document.querySelector(".paper");
+scissorButton = document.querySelector(".scissors");
+*/
+
+/* Adding event listener to main PLAY button
+const startGame = document.querySelector(".start-button");
+startGame.addEventListener('click', toggleGame);
+*/
