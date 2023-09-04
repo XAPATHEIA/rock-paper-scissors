@@ -45,6 +45,7 @@ function playerSelection(choice) {
 
 
 function playRound(playerSelection, computerSelection) {
+    console.log("i'm here");
     if (playerSelection === computerSelection) {
         return "tie";
     } else if (playerSelection === 1 && computerSelection === 2) {
@@ -66,7 +67,12 @@ let playerScore = 0;
 let computerScore = 0;
 
 function game(roundResult) {
-        if (roundResult === "computer") {
+        if (playerScore === 3) {
+            alert("Player Won this Game, Can you win another in a row?")
+        } else if (computerScore === 3) {
+            alert("Computer Won this Game, Better Luck Next Time!")
+        }
+        else if (roundResult === "computer") {
             computerScore += 1;
         } else if (roundResult === "player") {
             playerScore += 1;
@@ -75,31 +81,25 @@ function game(roundResult) {
 
 /* Function to wrap entire game around
 function toggleGame() {
-    var play = True;
+    var play = true;
     while (play) {
-        console.log("this is working");
+        if (currentChoice !== 0) {
+            while (playerScore !== 3 && computerScore !== 3) {
+                console.log("i'm here");
+                game(playRound(playerSelection(), getComputerChoice()));
+            }
+            play = false;
         }
     }
 }
 */
 
-
-while (playerScore !== 0 && computerScore !== 0) {
-    game(playRound(playerSelection(), getComputerChoice()));
-    if (playerScore === 1) {
-        alert("Player Won this Game, Can you win another in a row?")
-    } else if (computerScore === 1) {
-        alert("Computer Won this Game, Better Luck Next Time!")
-    }
-}
-
-
 /* DOM Manipulation begins here */
 
 /* Obtaining buttons from the rps-choices div, then selecting them all to add 
 an event listener */
-const buttonContainer = document.getElementsByClassName("rps-choices");
-const gameButtons = document.querySelectorAll("button");
+const buttonContainer = document.getElementById("rps-choices");
+const gameButtons = buttonContainer.querySelectorAll("button");
 
 /* Defining a function to handle the click event
 function buttonHandler(event) {
@@ -109,7 +109,7 @@ function buttonHandler(event) {
 
 gameButtons.forEach(button => {
     button.addEventListener("click", event => {
-        playerSelection(event.currentTarget.className);
+        game(playRound(playerSelection(event.currentTarget.className), getComputerChoice()));
     });
 });
 
@@ -120,7 +120,3 @@ paperButton = document.querySelector(".paper");
 scissorButton = document.querySelector(".scissors");
 */
 
-/* Adding event listener to main PLAY button
-const startGame = document.querySelector(".start-button");
-startGame.addEventListener('click', toggleGame);
-*/
