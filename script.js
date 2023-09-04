@@ -13,11 +13,10 @@ function getRndInteger(min, max) {
 // gets random integer between 1 and 3 and assigns to a variable
 getComputerChoice = () => getRndInteger(1, 4);
 
-// converts player choice into the appropriate number
+/* converts player choice into the appropriate number
 function playerSelectionConversion(choice) {
     let formattedChoice = choice.toLocaleUpperCase();
     console.log(formattedChoice)
-
     if (formattedChoice == "ROCK" ) {
         return 1;
     } else if (formattedChoice == "PAPER") {
@@ -26,6 +25,7 @@ function playerSelectionConversion(choice) {
         return 3;
     }
 }
+*/
 
 /*
 function playerSelection() {
@@ -45,7 +45,8 @@ function playerSelection(choice) {
 
 
 function playRound(playerSelection, computerSelection) {
-    console.log("i'm here");
+    console.log("Player chose " + playerSelection);
+    console.log("Computer chose " + computerSelection);
     if (playerSelection === computerSelection) {
         return "tie";
     } else if (playerSelection === 1 && computerSelection === 2) {
@@ -67,16 +68,28 @@ let playerScore = 0;
 let computerScore = 0;
 
 function game(roundResult) {
-        if (playerScore === 3) {
-            alert("Player Won this Game, Can you win another in a row?")
-        } else if (computerScore === 3) {
-            alert("Computer Won this Game, Better Luck Next Time!")
-        }
-        else if (roundResult === "computer") {
+        if (roundResult === "computer") {
+            console.log("Point went to Computer")
             computerScore += 1;
         } else if (roundResult === "player") {
+            console.log("Point went to Player")
             playerScore += 1;
-        }  
+        }  else if (roundResult === "tie") {
+            console.log("It was a tie")
+        }
+        console.log("Score is now - Computer: " + computerScore + "  Player: " + playerScore);
+}
+
+function scoreChecker() {
+    if (playerScore === 3) {
+        alert("Player Won this Game, Can you win another in a row?")
+        playerScore = 0;
+        computerScore = 0;
+    } else if (computerScore === 3) {
+        alert("Computer Won this Game, Better Luck Next Time!")
+        playerScore = 0;
+        computerScore = 0;
+    }
 }
 
 /* Function to wrap entire game around
@@ -109,7 +122,7 @@ function buttonHandler(event) {
 
 gameButtons.forEach(button => {
     button.addEventListener("click", event => {
-        game(playRound(playerSelection(event.currentTarget.className), getComputerChoice()));
+        scoreChecker(game(playRound(playerSelection(event.currentTarget.className), getComputerChoice())));
     });
 });
 
