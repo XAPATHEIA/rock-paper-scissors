@@ -1,10 +1,3 @@
-// TODO:
-//     : Simplify last function call
-//     : Wrap entire game in another function call so as to ask user if they wish
-//       to play another game.
-
-
-
 // function for getting a random integer
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
@@ -13,25 +6,6 @@ function getRndInteger(min, max) {
 // gets random integer between 1 and 3 and assigns to a variable
 getComputerChoice = () => getRndInteger(1, 4);
 
-/* converts player choice into the appropriate number
-function playerSelectionConversion(choice) {
-    let formattedChoice = choice.toLocaleUpperCase();
-    console.log(formattedChoice)
-    if (formattedChoice == "ROCK" ) {
-        return 1;
-    } else if (formattedChoice == "PAPER") {
-        return 2;
-    } else if (formattedChoice == "SCISSORS") {
-        return 3;
-    }
-}
-*/
-
-/*
-function playerSelection() {
-    return playerSelectionConversion(prompt("ROCK, PAPER or SCISSORS?"));
-} 
-*/
 
 function playerSelection(choice) {
     if (choice === "rock") {
@@ -43,10 +17,12 @@ function playerSelection(choice) {
     }
 }
 
+let computerChoiceInRound = null;
 
 function playRound(playerSelection, computerSelection) {
     console.log("Player chose " + playerSelection);
     console.log("Computer chose " + computerSelection);
+    computerChoiceInRound = computerSelection;
     if (playerSelection === computerSelection) {
         return "tie";
     } else if (playerSelection === 1 && computerSelection === 2) {
@@ -77,8 +53,7 @@ function game(roundResult) {
         }  else if (roundResult === "tie") {
             console.log("It was a tie")
         }
-        playerDisplayScore.textContent = `Player: ${playerScore}`;
-        computerDisplayScore.textContent = `Computer: ${computerScore}`;
+        gameUpdateElements()
         console.log("Score is now - Computer: " + computerScore + "  Player: " + playerScore);
 }
 
@@ -94,20 +69,6 @@ function scoreChecker() {
     }
 }
 
-/* Function to wrap entire game around
-function toggleGame() {
-    var play = true;
-    while (play) {
-        if (currentChoice !== 0) {
-            while (playerScore !== 3 && computerScore !== 3) {
-                console.log("i'm here");
-                game(playRound(playerSelection(), getComputerChoice()));
-            }
-            play = false;
-        }
-    }
-}
-*/
 
 /* DOM Manipulation begins here */
 
@@ -116,13 +77,21 @@ an event listener */
 const buttonContainer = document.getElementById("rps-choices");
 const gameButtons = buttonContainer.querySelectorAll("button");
 
-/* Defining a function to handle the click event
-function buttonHandler(event) {
-    console.log(event.currentTarget.className);
-}
-*/
+
+// Variables that will be used to adjust the score in real time
 const playerDisplayScore = document.querySelector("#player-score");
 const computerDisplayScore = document.querySelector("#computer-score");
+
+// Variable used to manipulate the result of the round
+const resultOfRound = document.querySelector("#round-end");
+
+
+function gameUpdateElements() {
+    playerDisplayScore.textContent = `Player: ${playerScore}`;
+    computerDisplayScore.textContent = `Computer: ${computerScore}`;
+    resultOfRound.textContent = `Player chose ${event.currentTarget.className}\nComputer chose ${computerChoiceInRound}`;
+}
+
 
 
 gameButtons.forEach(button => {
@@ -130,12 +99,4 @@ gameButtons.forEach(button => {
         scoreChecker(game(playRound(playerSelection(event.currentTarget.className), getComputerChoice())));
     });
 });
-
-
-
-/* Adding a separate variable to each button so each event can be treated separately
-rockButton = document.querySelector(".rock");
-paperButton = document.querySelector(".paper");
-scissorButton = document.querySelector(".scissors");
-*/
 
