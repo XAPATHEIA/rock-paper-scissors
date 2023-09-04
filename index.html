@@ -7,15 +7,17 @@
     </head>
     <body>
         <h1>Rock Paper Scissors</h1>
-        <div class="score">
-            <h2></h2>
+        <div class="score-container">
+            <p class="score-headline">SCORE</p>
+            <p id="player-score" class="score">Player: 0</p>
+            <p id="computer-score" class="score">Computer: 0</p>
         </div>
         <div id="rps-choices" class="rps-choices">
             <button type="button" class="rock"><img src="images/rock.png" width="260" height="500" alt="rock"></button>
             <button type="button" class="paper"><img src="images/paper.png" width="260" height="500" alt="paper"></button>
             <button type="button" class="scissors"><img src="images/scissors.png" width="260" height="500" alt="scissors"></button>
         </div>
-        <h3 class="result"></h2>
+        <h3 id="result" class="result"></h3>
         <script src="script.js"></script>        
     </body>
 </html>

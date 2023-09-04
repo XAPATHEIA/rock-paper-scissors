@@ -77,6 +77,8 @@ function game(roundResult) {
         }  else if (roundResult === "tie") {
             console.log("It was a tie")
         }
+        playerDisplayScore.textContent = `Player: ${playerScore}`;
+        computerDisplayScore.textContent = `Computer: ${computerScore}`;
         console.log("Score is now - Computer: " + computerScore + "  Player: " + playerScore);
 }
 
@@ -119,12 +121,16 @@ function buttonHandler(event) {
     console.log(event.currentTarget.className);
 }
 */
+const playerDisplayScore = document.querySelector("#player-score");
+const computerDisplayScore = document.querySelector("#computer-score");
+
 
 gameButtons.forEach(button => {
     button.addEventListener("click", event => {
         scoreChecker(game(playRound(playerSelection(event.currentTarget.className), getComputerChoice())));
     });
 });
+
 
 
 /* Adding a separate variable to each button so each event can be treated separately
