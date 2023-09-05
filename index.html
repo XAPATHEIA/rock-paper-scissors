@@ -13,12 +13,14 @@
             <p id="computer-score" class="score">Computer: 0</p>
         </div>
         <div id="rps-choices" class="rps-choices">
-            <button type="button" class="rock"><img src="images/rock.png" width="260" height="500" alt="rock"></button>
-            <button type="button" class="paper"><img src="images/paper.png" width="260" height="500" alt="paper"></button>
-            <button type="button" class="scissors"><img src="images/scissors.png" width="260" height="500" alt="scissors"></button>
+            <button type="button" id="rock" class="rock"><img src="images/rock.png" width="260" height="500" alt="rock"></button>
+            <button type="button" id="paper" class="paper"><img src="images/paper.png" width="260" height="500" alt="paper"></button>
+            <button type="button" id="scissors" class="scissors"><img src="images/scissors.png" width="260" height="500" alt="scissors"></button>
         </div>
         <div class="round-end-container">
-            <p id="round-end">Select an option to start.</p>
+            <p id="player-choice" class="round-choice">Select an option to start.</p>
+            <p id="computer-choice" class="round-choice"></p>
+            <p id="winner-of-round" class="round-choice"></p>
         </div>
         <script src="script.js"></script>        
     </body>
